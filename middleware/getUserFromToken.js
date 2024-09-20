@@ -1,5 +1,5 @@
 const jwt = require("jsonwebtoken");
-const checkToken = async (userSubmittedToken) => {
+const getUserFromToken = async (userSubmittedToken) => {
     if (userSubmittedToken === process.env.ADMIN_TOKEN) { //TODO: supprimer
         return {
             "id": 1,
@@ -13,8 +13,9 @@ const checkToken = async (userSubmittedToken) => {
                 return reject(err);
             }
             resolve(decoded)
+            //TODO: check user from DB ? with pw ?
         })
     })
 }
 
-module.exports = checkToken;
+module.exports = getUserFromToken;
